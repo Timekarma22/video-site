@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 10%;
+            background-color: #f4f4f4;
+        }
+        #video-container {
+            display: none;
+        }
+        #password-form input[type="password"],
+        #password-form input[type="submit"] {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const correctPassword = 'secure123'; // Change this to your preferred password
+
+            if (password === correctPassword) {
+                document.getElementById('password-form').style.display = 'none';
+                document.getElementById('video-container').style.display = 'block';
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Protected Video Access</h1>
+    <div id="password-form">
+        <p>Please enter the password to access the video:</p>
+        <input type="password" id="password" placeholder="Enter password">
+        <input type="submit" value="Submit" onclick="checkPassword()">
+    </div>
+
+    <div id="video-container">
+        <h2>Video Content</h2>
+        <video width="720" controls>
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</body>
+</html>

@@ -24,7 +24,7 @@
     <script>
         function checkPassword() {
             const password = document.getElementById('password').value;
-            const correctPassword = 'Georgeisgay'; //
+            const correctPassword = 'secure123'; // Change this to your preferred password
 
             if (password === correctPassword) {
                 document.getElementById('password-form').style.display = 'none';
@@ -32,6 +32,11 @@
             } else {
                 alert('Incorrect password. Please try again.');
             }
+        }
+
+        function bypassPassword() {
+            document.getElementById('password-form').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
         }
     </script>
 </head>
@@ -45,10 +50,10 @@
 
     <div id="video-container">
         <h2>Video Content</h2>
-        <video width="720" controls>
-            <source src="https://www.youtube.com/watch?v=BBJa32lCaaY" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Embed YouTube Video -->
+        <iframe width="720" height="405" src="https://www.youtube.com/embed/BBJa32lCaaY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+    <p><a href="#" onclick="bypassPassword()">Click here to access without password</a></p>
 </body>
 </html>

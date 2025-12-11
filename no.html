@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be Mine? 💗</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fdeef7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 100px;
+    }
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      position: absolute;
+      transition: 0.2s;
+    }
+    .yes-btn {
+      left: 50px;
+      background: #ffb6c9;
+      color: white;
+    }
+    .no-btn {
+      right: 50px;
+      background: #f8a1c3;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Will you continue to be mine? 💗</h2>
+
+  <div class="buttons">
+    <button class="yes-btn" onclick="yesClicked()">Yes</button>
+    <button class="no-btn" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
+  </div>
+
+  <script>
+    function moveNoButton() {
+      const btn = document.querySelector('.no-btn');
+      const maxX = Math.min(300, window.innerWidth / 3);
+      const maxY = Math.min(150, window.innerHeight / 4);
+      const x = Math.random() * maxX * 2 - maxX;
+      const y = Math.random() * maxY * 2 - maxY;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function yesClicked() {
+      alert('Yay! You are mine forever ❤️');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Journey 🌙</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fdf5f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 50px;
+      max-width: 600px;
+      width: 90%;
+      text-align: left;
+    }
+    .event {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffb6c9;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background: #ff9fb9;
+    }
+    /* Modal styles */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  cursor: default;
+}
+.modal .box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+}
+.modal .actions { margin-top: 12px; display:flex; gap:8px; justify-content:center; }
+.modal .btn { padding:8px 14px; border-radius:8px; border:none; cursor:pointer; }
+.modal .btn.primary { background:#ffb6c9; color:#fff; }
+.modal .btn.secondary { background:#eee; color:#333; }
+.no-scroll { overflow: hidden; }
+  </style>
+</head>
+<body>
+<audio id="song" controls loop>
+    <source src="justthetwoofus.mp3" type="audio/mpeg">
+  </audio>
+  
+
+  <div class="container">
+    <h2>Our Journey 🌙</h2>
+    <div class="event">✨the spark that started it all</div>
+    <img src="chats.jpg" alt="the texts that started all this" style="width:350px; border-radius:10px; margin:15px 0;">
+    <div class="event">💞 Late-night calls that felt like we were together</div>
+    <img src="late1.jpg" alt="late night calls" style="width:100px; border-radius:10px; margin:15px 0;">
+    <img src="late2.jpg" alt="late night calls" style="width:100px; border-radius:10px; margin:15px 0;">
+    <img src="late3.jpg" alt="late night calls" style="width:100px; border-radius:10px; margin:15px 0;">
+    <div class="event">📸 Our shared pictures and little memories</div>
+    <img src="shared.jpg" alt="shared pictures" style="width:300px; border-radius:10px; margin:15px 0;">
+    <div class="event">💌 Falling deeper in love despite the distance</div>
+    <img src="falling1.jpg" alt="love letters" style="width:100px; border-radius:10px; margin:15px 0;">
+    <img src="falling2.jpg" alt="love letters" style="width:100px; border-radius:10px; margin:15px 0;">
+    <img src="falling3.jpg" alt="love letters" style="width:100px; border-radius:10px; margin:15px 0;">
+    <video autoplay muted loop playsinline width="600" height="400">
+    <source src="fallingvid.mp4" type="video/mp4">
+</video>
+
+    <div class="event">🌙 All the dreams and moments waiting for us</div>
+    <img src="future1.jpg" alt="dreams together" style="width:300px; border-radius:10px; margin:15px 0;">
+    <img src="future2.jpg" alt="dreams together" style="width:300px; border-radius:10px; margin:15px 0;">
+    <img src="future3.jpg" alt="dreams together" style="width:300px; border-radius:10px; margin:15px 0;">
+    <img src="future4.jpg" alt="dreams together" style="width:300px; border-radius:10px; margin:15px 0;">
+    <a href="no.html" class="button" id="continueBtn">Continue ➜</a>
+  </div>
+
+  <div class="modal" id="playModal" aria-hidden="true">
+  <div class="box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Please play the audio</h3>
+    <p>Before continuing, please play the audio file above.</p>
+    <div class="actions">
+      <button class="btn primary" id="modalPlay">Play audio</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const continueBtn = document.getElementById('continueBtn');
+    const audio = document.getElementById('song');
+    const modal = document.getElementById('playModal');
+    const playBtn = document.getElementById('modalPlay');
+    const modalBox = modal.querySelector('.box');
+
+    function isPlaying(a){
+      return a && !a.paused && a.currentTime > 0;
+    }
+
+    function openModal(){
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('no-scroll');
+      playBtn.focus();
+      document.addEventListener('keydown', onKeyDown);
+    }
+
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+      document.removeEventListener('keydown', onKeyDown);
+    }
+
+    function onKeyDown(e){
+      if (e.key === 'Escape') closeModal();
+    }
+
+    modal.addEventListener('click', function(e){
+      if (!modalBox.contains(e.target)) closeModal();
+    });
+
+    continueBtn && continueBtn.addEventListener('click', function(e){
+      if (!isPlaying(audio)) {
+        e.preventDefault();
+        openModal();
+      }
+    });
+
+    playBtn && playBtn.addEventListener('click', function(){
+      audio && audio.play().catch(()=>{});
+    });
+
+    // close modal automatically when audio starts playing
+    audio && audio.addEventListener('play', function(){
+      if (modal.style.display === 'flex') closeModal();
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      if (!isPlaying(audio)) openModal();
+    });
+
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  })();
+</script>
+</body>
+</html>

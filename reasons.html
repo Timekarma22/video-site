@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reasons I Love You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fdf0f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 50px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+    #reason-box {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      min-height: 50px;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffb6c9;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #ff9fb9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Reasons I Love You(infinite, keep clicking the button it never stops)</h2>
+    <div id="reason-box">Click the button to see a reason ❤️</div>
+    <button class="button" onclick="newReason()">Give me a reason</button>
+    <br>
+    <a href="journey.html" class="button">Our Journey 🌙</a>
+  </div>
+
+  <script>
+    const reasons = [
+"You make my world brighter.",
+"Your laughter fills my heart.",
+"You make distance feel small.",
+"Your kindness amazes me every day.",
+"You are my soft and safe place.",
+"You make life sweeter.",
+"You understand me like no one else.",
+"You’re effortlessly beautiful inside and out.",
+"You are my peace.",
+"You make every moment magical.",
+"You make my world brighter.",
+"Your laughter fills my heart.",
+"You make distance feel small.",
+"Your kindness amazes me every day.",
+"You are my soft and safe place.",
+"You make life sweeter.",
+"You understand me like no one else.",
+"You’re effortlessly beautiful inside and out.",
+"You are my peace.",
+"You make every moment magical.",
+"You inspire me to be better.",
+"Your voice is my favorite sound.",
+"You make me smile even from afar.",
+"Your love feels like home.",
+"You believe in me when I doubt myself.",
+"Your strength motivates me.",
+"You are my biggest cheerleader.",
+"You make my dreams feel possible.",
+"Your messages brighten my darkest days.",
+"You are my heart’s favorite person.",
+"Your patience amazes me.",
+"You make ordinary days extraordinary.",
+"Your hugs, even virtual, feel real.",
+"You are my favorite thought.",
+"Your presence lingers even across miles.",
+"You make me feel understood.",
+"Your passion inspires me.",
+"You are my constant comfort.",
+"Your smile stays with me all day.",
+"You make love feel effortless.",
+"Your honesty builds my trust.",
+"You are my reason to keep going.",
+"Your creativity fascinates me.",
+"You make challenges easier to face.",
+"Your encouragement lifts me up.",
+"You are my safe harbor.",
+"Your heart is pure and beautiful.",
+"You make me laugh like no one else can.",
+"Your support means everything.",
+"You are my daily sunshine.",
+"Your curiosity inspires me to learn more.",
+"You make me feel special every day.",
+"Your thoughts are endlessly interesting.",
+"You are my favorite person to dream with.",
+"Your love feels infinite.",
+"You make memories unforgettable.",
+"Your touch, even imagined, is comforting.",
+"You make my heart skip beats.",
+"Your soul feels like home.",
+"You are my favorite hello and hardest goodbye.",
+"Your optimism brightens my darkest hours.",
+"You make me want to be the best version of myself.",
+"Your understanding is beyond words.",
+"You are my forever inspiration."
+    ];
+
+    function newReason() {
+      const box = document.getElementById('reason-box');
+      const randomIndex = Math.floor(Math.random() * reasons.length);
+      box.textContent = reasons[randomIndex];
+    }
+  </script>
+
+</body>
+</html>
